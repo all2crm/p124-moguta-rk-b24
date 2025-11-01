@@ -268,10 +268,6 @@ class PaymentRobokassaB24 {
                 Models_Payment::loger(self::$pluginName, __CLASS__.'_'.__FUNCTION__, $signtestreq['result'] );
                 exit; }    
             $result = [ 'status' => 'success','message' => 'Вы успешно оплатили заказ №' . $order['number'], ];
-            Controllers_Payment::actionWhenPayment([
-                'paymentOrderId' => $order['id'],
-                'paymentAmount' => $orderSumm,
-                'paymentID' => $payment['id'], ]);
         } elseif ($_GET['pay'] === 'result') {    ///////////// result & b24
             
             $signtestreq = curlyc('https://apps.all2crm.ru/mogutacmsplugin-rk-b24/mgt-rk-b24-plugin-signtestreq.php', http_build_query(array(
